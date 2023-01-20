@@ -1,0 +1,161 @@
+<!DOCTYPE html>  
+
+<script src="leaflet.js"> // Bibliothèque Leaflet : http://leafletjs.com/ </script>
+
+<title>Les sites de l'UNESCO</title>
+<link rel="stylesheet" type="text/css" href="leaflet.css" /> 
+<link rel="stylesheet" type="text/css" href="Fiche_2.css"/>
+<link rel="stylesheet" type="text/css" href="Style.css"/>
+<script src="Comments.js"></script>
+<script src="Leaflet.js"></script>
+<script src="Apputils.js"></script>
+
+
+<meta charset="utf-8">
+
+<body onload="load_data();">
+
+<h1 id='bandeau'>Les sites de l'UNESCO<h1>
+
+<section><div id="map" name="poi" required></div>
+</section> 
+
+<div id='description'>
+
+</div>
+
+
+<div id='messages'></div>
+<button id="show_comments">Afficher les commentaires du site</button>
+
+
+<button id="hide_comments">Cacher les commentaires du site</button>
+
+<button id="add_comment" class="show_popup" data-popup="message_editor">
+  Laisser un message
+</button>
+
+<div id="message_editor" class="resizable popup">
+  <header id="message_editor_header" class="handle">Édition d'un message</header>
+  <label><span>Pseudo : </span><input id="input_pseudo"></label>
+  <label><span>Mot de passe : </span><input id="input_password" type="password"></label>
+  <label><span>Date de visite : </span><input id="input_date"></label>
+  <label><span>Commentaire : </span><textarea id="input_message"></textarea></label>
+  <footer>
+    <button id="create_message">Envoyer</button>
+    <button id="hide_editor" class="hide_popup">Abandonner la publication</button>
+  </footer>
+</div>
+<div id="pwd_request" class="popup">
+  <header id="pwd_request_header" class="handle">Entrer le mot de passe</header>
+  <label><span>Password : </span><input id="enter_pwd" type="password"></label>
+  <footer><button id="confirm_pwd">Ok</button></footer>
+</div>
+</body>
+
+
+<script>
+// variable globale pour le nom du site sélectionné via le marqueur
+var site_name;
+
+  // Création d'une carte dans la balise div "map",
+// et position de la vue sur un point donné et un niveau de zoom
+var map = L.map('map').setView([20,20], 1.5);
+
+// Ajout d'une couche de dalles OpenStreetMap
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+     }).addTo(map);
+
+// Modifier cette ligne en fonction de votre projet
+var entity_list_name = 'sites'
+
+var xhr = new XMLHttpRequest();
+ 
+// cette fonction sera appelée lorsque la réponse du serveur sera disponible
+xhr.onload = function() {
+    
+  // récupération de l'information renvoyée par le serveur
+  var data = JSON.parse(this.responseText);
+      
+      
+  // boucle sur les lieux
+    for ( n = 0; n < data.length; n++ ) {
+      // insertion d'un marqueur à la position du lieu,
+      // attachement d'une popup, capture de l'événement 'clic'
+      // ajout d'une propriété personnalisée au marqueur avec
+      // l'identifiant unique du point d'intérêt
+      L.marker([data[n].lat,data[n].lon]).addTo(map)
+       .bindPopup('Lieu = '+data[n].name)
+       .addEventListener('click',OnMarkerClick)
+       .idnum = data[n].name;
+  }
+
+};
+
+// détails de la requête envoyée au serveur
+xhr.open('GET','/' + entity_list_name,true);
+    
+// envoi de la requête
+xhr.send();
+
+
+var entity_name = entity_list_name.substring(0,entity_list_name.length-1);
+
+
+function OnMarkerClick(e) {
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function() {
+    var data = JSON.parse(this.responseText);
+   
+   //Le numéro du lieu est récupéré via la propriété personnalisée du marqueur
+  site_name = e.target.idnum
+
+    
+    
+
+
+    // Exploitation de la réponse
+    var html = '<img class="image_site" src="' + data.photo + '">';
+    html += '<h2><a href="' + data.wiki + '">' + site_name+ '</a></h2>';
+    html += '<div class="lien"><a href="' + data.dbpedia + '">' + data.dbpedia + '</a></div>';
+    html += '<div id="other">';
+    for( k in data.other ) {
+      html += '<span><b>' + k + '</b>: ' + data.other[k] + '</span>';
+    }
+    html += '</div>'
+    html += '<p>' + data.abstract + '</p>'
+
+    document.getElementById('description').innerHTML = html;
+  };
+  // Le numéro du lieu est récupéré via la propriété personnalisée du marqueur
+  site_name = e.target.idnum
+
+   
+  xhr.open('GET','/' + entity_name + '/' + site_name,true);
+  xhr.send();
+  {
+  messages.textContent = '';
+
+  // On envoie une requête Ajax pour récupérer la liste des messages
+  ajax_request('GET','/commentaires/' + site_name, function() {
+
+    // récupération des données renvoyées par le serveur
+    let data = JSON.parse(this.responseText);
+
+    // boucle sur les messages
+    data.forEach(hide_message);
+
+  });
+}
+
+}
+</script>
+<script>
+ 
+show_comments.addEventListener('click', display_messages);
+create_message.addEventListener('click', post_message);
+hide_comments.addEventListener('click', hide_messages);
+
+
+</script>

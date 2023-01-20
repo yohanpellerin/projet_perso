@@ -1,0 +1,153 @@
+﻿
+	
+/* fond de page */
+body {
+  background-color: rgb(185,201,182) ;
+  background-repeat: no-repeat;
+  color: white;
+  width: vmax vh;
+  margin: 0 auto;
+  /* pour éviter l'ascenseur */
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+
+/* bandeau de titre */
+#bandeau { 
+  color: white;
+  font-size: 3vw;
+  text-align: center ;
+  border: none;
+  box-shadow: none;
+  background-color: rgba(255,255,255,0.3);
+  border-top: 3px solid rgba(255,255,255,0.6);
+  border-bottom: 3px solid rgba(255,255,255,0.6);
+  margin-top: 1.33em;
+  text-shadow: 3px 3px 3px black;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin-bottom: 1.33em;
+}
+
+/* Contenu de la description*/
+#description { 
+  font-size: 1vw;
+   color : white;               
+}
+
+/* contenu de la page */
+body > * {   padding-left: 10px; }
+
+/* polices de caractères */
+body { font-family: Trebuchet MS, sans-serif; }
+
+/* positionnement des champs */
+label { display: block; }
+label span { display: inline-block; width: 5em; height: 1.5em; }
+
+
+input, textarea {
+  font-family: monospace;
+  padding: 2px 0.5em;
+  width: 5em;
+  font-size: 1.2em;
+  line-height: 1.33em;
+  color: white;
+  margin-top: 5px;
+}
+.button {
+  border: 3px outset #444;
+  background-color: #888;
+  padding: 5px 0.5em;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 1em 0;
+
+  color: #eee;
+  text-shadow: #000 -1px -1px 0;
+  right: calc(100% - 8em - 3px);
+}
+*/
+
+a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+*/
+a.delete:hover {
+  color: red;
+}
+#map { height: 50vh; width: 50vw; border: 3px rgb(70,142,223) ridge;
+border-radius: 50px;
+margin-left: auto;
+margin-right: auto;
+vertical-align: middle;}
+
+img {
+	float:right;
+	margin-left: auto;
+
+}
+ #description{height: 100vh; width: 70vw; 
+  
+margin-top : 2vh;
+margin-left: 2vw;
+margin-right: 3vw;
+margin-bottom : 2vg;
+vertical-align: middle;
+text-align: center;
+float:right;}
+
+.lien {font-style: italic;}
+
+.image_site {
+  display: block;
+  
+  
+  width : 30vw;
+  height: 30vh;
+  border: 3px rgb(70,142,223) ridge;
+border-radius: 20px;
+
+}
+
+#add_comment {
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  text-align: center;
+  width: 10vw;
+  height: 3vw;
+  font-size: 1vw;
+  margin-top : 1vh;
+  margin-left: 1vw; 
+  float: left;
+  position: relative;
+}
+#show_comments {
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  text-align: center;
+  width: 18vw;
+  height: 3vw;
+  font-size: 1vw;
+  margin-left: 1vw;
+  margin-top : 10vh;
+  float:left ;
+  position: relative;
+}
+
+#hide_comments {
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  text-align: center;
+  width: 18vw;
+  height: 3vw;
+  font-size: 1vw;
+  margin-left: 1vw;
+  margin-top : 1vh;
+  float:left ;
+  position: relative;
+}
+
+

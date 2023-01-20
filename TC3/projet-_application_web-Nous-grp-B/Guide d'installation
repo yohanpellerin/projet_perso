@@ -1,0 +1,17 @@
+# Guide d'installation
+
+**Bienvenue sur le guide d'installation de l'App'UNESCO!**
+
+Pour pouvoir vous divertir grâce à notre carte animée rien de plus simple, il suffit de suivre le guide!
+
+- Commencez par télécharger le dossier "App'UNESCO" et placez le dossier sur votre bureau.
+
+- Ensuite utilisez votre éditeur Pyhton pour ouvrir le fichier "serveur.py" qui se trouve dans le dossier.
+
+- Appuyez sur "Run" pour lancer l'activation du serveur.
+
+Le serveur est maintenant actif, utilisez maintenant un navigateur WEB pour utiliser l'application!
+
+- Rendez-vous sur le lien suivant : _localhost:8080/_ et l'application est maintenant active!
+
+Le guide d'insatllation est terminé vous pouvez dès à présent vous divertir grâce à App'UNESCO!

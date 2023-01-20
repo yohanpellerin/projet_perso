@@ -1,0 +1,134 @@
+﻿/* fond de page */
+body {
+	background-image: url("images/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 210%;
+  color: white;
+  
+}
+.container 
+{
+width: 1266;
+height: 700;
+display: flex;
+flex-direction: row;
+flex-wrap: nowrap;
+justify-content: space-around;
+margin-right:5em;
+}
+.map
+{ 
+
+	border :0px solid;
+	width: 700px;
+	height: 100px;
+	margin-right:1em;
+}
+.children
+{
+  display: inline;
+	margin-left:1em;
+	width: 600px;
+	height: 100px;
+  color: white;
+  font-weight: bolder;
+}
+
+i
+{
+	color: #e55252 ;
+	font-family: Jazz LET;
+	font-size: x-large;
+}
+a
+{
+	color: #e55252 ;
+}
+t 
+{
+  color: white;
+	font-weight: normal;
+}
+
+
+/* bandeau de titre */
+h1 { 
+  color: #e55252 ;
+  text-shadow: 3px 3px 3px black;
+  box-shadow: none;
+  margin-top: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;  
+  margin-bottom: 1.33em;
+  background-color: rgba(255,255,255,0.3);
+  border-top: 3px solid rgba(255,255,255,0.6);
+  border-bottom: 3px solid rgba(255,255,255,0.6);
+  margin-top: 1.33em;
+  width: 96%;
+  font-family: 'Pacifico';
+}
+
+
+
+/* contenu de la page */
+body > * {   padding-left: 50px; }
+
+/* polices de caractères */
+body { font-family: Trebuchet MS, sans-serif; }
+
+/* positionnement des champs */
+label { display: block; }
+label span { display: inline-block; width: 5em; height: 1.5em; }
+
+
+a.delete:hover {
+  color:  #e55252;
+}
+#map { 
+  height: 400px; 
+  width: 600px;
+  border: solid;
+  border-radius: 10px;
+}
+
+img {
+	float: right;
+	width: 200px;
+	margin-left: 20px;
+}
+
+#photo-presentation{
+  border-radius: 20% 20% 20% 50%; 
+  width: 10em;
+  height: 7em;
+}
+
+
+
+
+h2 a{
+  text-decoration: none;
+}
+
+
+.lien{
+  font-style: italic;
+  font-size: smaller;
+  padding-bottom: 2em;
+}
+
+
+  
+.bouton{
+  margin-top: 10px;
+  padding-bottom: 50px;
+}
+
+#pwd_request_header #hide_editor{
+  text-align: center;
+  float: right;
+  width: 30px;
+  height: 30px;
+  background-color: unset;
+}
